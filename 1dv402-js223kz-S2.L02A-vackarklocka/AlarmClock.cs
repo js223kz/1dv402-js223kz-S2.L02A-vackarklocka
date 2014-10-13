@@ -20,12 +20,12 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
                 return _hour;
             }
             set{
-               if(_hour > 23 || _hour < 0 ){
+               
+                if(_hour > 23 || _hour < 0 ){
 
                     throw new ArgumentException();
                 }
                 _hour = value; 
-
             }
         }
 
@@ -43,7 +43,6 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
                     throw new ArgumentException();
                 }
                 _alarmHour = value;
-
             }
         }
 
@@ -82,7 +81,7 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
 
         /// kontruktorerna 3 st till antalet
         public AlarmClock()
-            : this(9, 35)
+            : this(0, 0)
         {
 
         }
@@ -90,7 +89,6 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
         public AlarmClock(int hour, int minute) 
             : this(hour, minute, 0, 0)
         {
-            
        
         }
     
@@ -98,8 +96,10 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
         public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute) 
         {
 
-            alarmHour = hour;
-            alarmMinute = minute + 1;
+            DateTime clock = new DateTime();
+            clock = DateTime.Now;
+            hour = clock.Hour;
+            minute = clock.Minute;
 
             _hour = hour;
             _minute = minute;
@@ -107,20 +107,33 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
             _alarmMinute = alarmMinute;
         }
 
-        private bool TickTock(int ClockMinute, int ClockHour)
+       public bool TickTock()
         {
-            _minute = ClockMinute;
-
-            while (ClockMinute < 60)
+           while (_minute < 60)
             {
+                _minute++;
 
-                ClockMinute++;
+                if(_minute == 59) {
+                    _minute = 0;
+                    _hour = _hour + 1;
+                }
+
+                if (_hour == _alarmHour && _minute == AlarmMinute)
+                {
+                    return true;
+                }
             }
-
-            ClockMinute = 0;
-            ClockHour = _hour + 1;
+             return false;    
         }
-      
 
+        public string ToString(string clockValue, string minute, string hour)
+        {
+            minute = Convert.ToString(_minute);
+            hour = Convert.ToString(_hour);
+
+            clockValue =String.Format ("{0}{1}{2}", hour, ":", minute);
+
+            return clockValue;
+        }
     }
 }
