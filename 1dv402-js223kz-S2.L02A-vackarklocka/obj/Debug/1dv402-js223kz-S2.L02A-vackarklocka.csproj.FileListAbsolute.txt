@@ -1,0 +1,6 @@
+c:\users\johanna\documents\visual studio 2013\Projects\1dv402-js223kz-S2.L02A-vackarklocka\1dv402-js223kz-S2.L02A-vackarklocka\bin\Debug\1dv402-js223kz-S2.L02A-vackarklocka.exe.config
+c:\users\johanna\documents\visual studio 2013\Projects\1dv402-js223kz-S2.L02A-vackarklocka\1dv402-js223kz-S2.L02A-vackarklocka\obj\Debug\1dv402-js223kz-S2.L02A-vackarklocka.csprojResolveAssemblyReference.cache
+c:\users\johanna\documents\visual studio 2013\Projects\1dv402-js223kz-S2.L02A-vackarklocka\1dv402-js223kz-S2.L02A-vackarklocka\bin\Debug\1dv402-js223kz-S2.L02A-vackarklocka.exe
+c:\users\johanna\documents\visual studio 2013\Projects\1dv402-js223kz-S2.L02A-vackarklocka\1dv402-js223kz-S2.L02A-vackarklocka\bin\Debug\1dv402-js223kz-S2.L02A-vackarklocka.pdb
+c:\users\johanna\documents\visual studio 2013\Projects\1dv402-js223kz-S2.L02A-vackarklocka\1dv402-js223kz-S2.L02A-vackarklocka\obj\Debug\1dv402-js223kz-S2.L02A-vackarklocka.exe
+c:\users\johanna\documents\visual studio 2013\Projects\1dv402-js223kz-S2.L02A-vackarklocka\1dv402-js223kz-S2.L02A-vackarklocka\obj\Debug\1dv402-js223kz-S2.L02A-vackarklocka.pdb
