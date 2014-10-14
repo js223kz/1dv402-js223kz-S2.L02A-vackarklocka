@@ -13,6 +13,7 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
         private int _alarmHour;
         private int _alarmMinute;
 
+        //Egenskap som kapslar in _hour
         public int Hour
         {
             get
@@ -28,7 +29,25 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
                 _hour = value; 
             }
         }
+        //Egenskap som kapslar in _minute
+        public int Minute
+        {
+            get
+            {
+                return _minute;
+            }
+            set
+            {
+                if (_minute > 59 || _minute < 0)
+                {
 
+                    throw new ArgumentException();
+                }
+                _minute = value;
+            }
+        }
+
+        //Egenskap som kapslar in _alarmHour
         public int AlarmHour
         {
             get
@@ -45,7 +64,8 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
                 _alarmHour = value;
             }
         }
-
+        
+        //Egenskap som kapslar in _alarmMinute
         public int AlarmMinute
         {
             get
@@ -56,7 +76,6 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
             {
                 if (_alarmMinute > 59 || _alarmMinute < 0)
                 {
-
                     throw new ArgumentException();
                 }
                 _alarmMinute = value;
@@ -64,20 +83,7 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
             }
         }
 
-        public int Minute
-        {
-            get
-            {
-                return _minute;
-            }
-            set{
-                if(_minute > 59 || _minute < 0 ){
-
-                    throw new ArgumentException();
-                }
-                _minute = value;
-            }
-        }
+        
 
         /// kontruktorerna 3 st till antalet
         public AlarmClock()
@@ -95,45 +101,44 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
         
         public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute) 
         {
-
-            DateTime clock = new DateTime();
-            clock = DateTime.Now;
-            hour = clock.Hour;
-            minute = clock.Minute;
-
             _hour = hour;
             _minute = minute;
             _alarmHour = alarmHour;
             _alarmMinute = alarmMinute;
         }
 
+        //KLockan ska ticka varje minut
        public bool TickTock()
         {
-           while (_minute < 60)
-            {
-                _minute++;
+            _minute++;
 
-                if(_minute == 59) {
-                    _minute = 0;
-                    _hour = _hour + 1;
-                }
+             if(_minute > 59) {
+                 _minute = 0;
+                 _hour = _hour + 1;
+             }
+             
+           if (_hour > 23)
+             {
+                 _hour = 0;
+             }
 
-                if (_hour == _alarmHour && _minute == AlarmMinute)
-                {
-                    return true;
-                }
-            }
-             return false;    
+             if (_hour == _alarmHour && _minute == _alarmMinute){
+                
+                 return true;
+             }   
+             
+           return false;   
         }
 
-        public string ToString(string clockValue, string minute, string hour)
+       
+        //Formatera klockslaget
+       public string ToString()
         {
-            minute = Convert.ToString(_minute);
-            hour = Convert.ToString(_hour);
 
-            clockValue =String.Format ("{0}{1}{2}", hour, ":", minute);
+           string clockValue = String.Format("{0}{1}{2:0,0}", _hour, ":", _minute);
+           string alarmValue = String.Format("{0}{1}{2}{3:0,0}{4}", '(', _alarmHour, ":", _alarmMinute, ')');
 
-            return clockValue;
+           return String.Format("{0, 10} {1, -5}", clockValue, alarmValue);
         }
     }
 }
