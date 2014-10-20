@@ -30,6 +30,10 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
             alarm = new AlarmClock(6, 12, 6, 15);
             Console.WriteLine("\nTest 5\nStäller befintligt AlarmClock-Objekt till 6:12 och alarmtiden till 6:15 och låter den gå i 6 minuter.\n");
             Run(alarm, 6);
+
+            string message = "";
+            ViewErrorMessage(message);
+        
         }
 
         private static void Run(AlarmClock alarm, int minutes)
@@ -41,19 +45,40 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
             Console.WriteLine(" ║  Modellnr.: 1DV402S2L2A  ║ ");
             Console.WriteLine(" ╚══════════════════════════╝ ");
             Console.ResetColor();
+
+            bool alarmTime = true;
             
             for (int i = 0; i < minutes; i++)
             {
-                 alarm.TickTock();
-                 Console.WriteLine(alarm.ToString());
-                 
+                alarmTime = alarm.TickTock();
+
+                if (alarmTime){
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(alarm.ToString() + " BEEP! BEEP! BEEP! BEEP!");
+                    Console.ResetColor();
+                }else{
+                    Console.WriteLine(alarm.ToString());
+                }   
             }
-            Console.WriteLine();
-           
         }
 
         private static void ViewErrorMessage(string message)
         {
+            try
+            {
+                AlarmClock testAlarm = new AlarmClock(50, 72, 26, 72);
+                testAlarm.TickTock();
+            }
+            catch(ArgumentException e)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine();
+                Console.WriteLine("{0}", e.Message);
+                Console.ResetColor();
+               
+            } 
         }
     }
 }

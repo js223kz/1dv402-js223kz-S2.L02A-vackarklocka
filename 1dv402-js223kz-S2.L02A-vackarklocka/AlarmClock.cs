@@ -8,82 +8,68 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
 {
     public class AlarmClock
     {
-        private int _hour;
-        private int _minute;
-        private int _alarmHour;
-        private int _alarmMinute;
+        private int _Hour;
+        private int _Minute;
+        private int _AlarmHour;
+        private int _AlarmMinute;
 
         //Egenskap som kapslar in _hour
-        public int Hour
-        {
-            get
-            {
-                return _hour;
+        public int Hour{
+            get{
+                return _Hour;
             }
             set{
                
-                if(_hour > 23 || _hour < 0 ){
+                if(value > 24 || value < 0 ){
 
-                    throw new ArgumentException();
+                    throw new ArgumentException("Timmen är inte i intervallet 0-23.");
                 }
-                _hour = value; 
+                _Hour = value; 
             }
         }
+        
         //Egenskap som kapslar in _minute
-        public int Minute
-        {
-            get
-            {
-                return _minute;
+        public int Minute{
+            get{
+                return _Minute;
             }
-            set
-            {
-                if (_minute > 59 || _minute < 0)
+            set{
+                if (value > 60|| value < 0)
                 {
-
-                    throw new ArgumentException();
+                    throw new ArgumentException("Minuten är inte i intervallet 0-59.");
                 }
-                _minute = value;
+
+                _Minute = value;
             }
         }
 
         //Egenskap som kapslar in _alarmHour
-        public int AlarmHour
-        {
-            get
-            {
-                return _alarmHour;
+        public int AlarmHour{
+            get{
+                return _AlarmHour;
             }
-            set
-            {
-                if (_alarmHour > 23 || _alarmHour < 0)
+            set{
+                if (value > 24 || value < 0)
                 {
-
-                    throw new ArgumentException();
+                    throw new ArgumentException("Alarmtimmen är inte i intervallet 0-23.");
                 }
-                _alarmHour = value;
+                _AlarmHour = value;
             }
         }
         
         //Egenskap som kapslar in _alarmMinute
-        public int AlarmMinute
-        {
-            get
-            {
-                return _alarmMinute;
+        public int AlarmMinute{
+            get{
+                return _AlarmMinute;
             }
-            set
-            {
-                if (_alarmMinute > 59 || _alarmMinute < 0)
+            set{
+                if (value > 60 || value < 0)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Alarmminuten är inte i intervallet 0-59.");
                 }
-                _alarmMinute = value;
-
+                _AlarmMinute = value;
             }
         }
-
-        
 
         /// kontruktorerna 3 st till antalet
         public AlarmClock()
@@ -101,42 +87,44 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
         
         public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute) 
         {
-            _hour = hour;
-            _minute = minute;
-            _alarmHour = alarmHour;
-            _alarmMinute = alarmMinute;
+            _Hour = hour;
+            _Minute = minute;
+            _AlarmHour = alarmHour;
+            _AlarmMinute = alarmMinute;
         }
 
         //KLockan ska ticka varje minut
-       public bool TickTock()
+        public bool TickTock()
         {
-            _minute++;
 
-             if(_minute > 59) {
-                 _minute = 0;
-                 _hour = _hour + 1;
-             }
-             
-           if (_hour > 23)
-             {
-                 _hour = 0;
-             }
+            Minute++;
+            if (Minute == 60)
+            {
+                Minute = 0;
+                Hour = Hour + 1;
+            }
 
-             if (_hour == _alarmHour && _minute == _alarmMinute){
+            if (Hour == 24)
+            {
+                Hour = 0;
+            }
                 
+
+           if (Hour == AlarmHour && Minute == AlarmMinute){
                  return true;
-             }   
-             
-           return false;   
+             }
+             else{
+                 return false; 
+             } 
         }
 
        
         //Formatera klockslaget
-       public string ToString()
+       public override string ToString()
         {
 
-           string clockValue = String.Format("{0}{1}{2:0,0}", _hour, ":", _minute);
-           string alarmValue = String.Format("{0}{1}{2}{3:0,0}{4}", '(', _alarmHour, ":", _alarmMinute, ')');
+           string clockValue = String.Format("{0}{1}{2:0,0}", Hour, ":", Minute);
+           string alarmValue = String.Format("{0}{1}{2}{3:0,0}{4}", '(', AlarmHour, ":", AlarmMinute, ')');
 
            return String.Format("{0, 10} {1, -5}", clockValue, alarmValue);
         }
