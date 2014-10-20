@@ -30,8 +30,12 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
             Console.WriteLine("\nTest 5\nStäller befintligt AlarmClock-Objekt till 6:12 och alarmtiden till 6:15 och låter den gå i 6 minuter.\n");
             Run(alarm, 6);
 
+            Console.WriteLine("\nTest 6\nTestar egenskaperna så att undantag kastas då tid och alarmtid tilldelas fel värden\n");
             string message = "";
             ViewErrorMessage(message);
+ 
+            Console.WriteLine("\nTest 7\nTestar konstruktorer så att undantag kastas då tid och alarmtid tilldelas fel värden\n");
+            ViewTestHeader(message);
         
         }
 
@@ -103,6 +107,23 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
                  DisplayExceptionMessage(e.Message);
              }
  
+        }
+
+        private static void ViewTestHeader(string header)
+        {
+            AlarmClock testConstructors = new AlarmClock();
+            try
+            {
+                testConstructors = new AlarmClock(25, 62);
+                testConstructors.TickTock();
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine();
+                DisplayExceptionMessage(e.Message);
+                 
+            }
+
         }
         
         //Method that displays errormessages for different properties in AlarmClock.cs
