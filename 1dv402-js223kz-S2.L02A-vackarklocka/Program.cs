@@ -11,7 +11,6 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
         static void Main(string[] args)
         {
             AlarmClock alarm = new AlarmClock();
-
             Console.WriteLine("Test 1\nTest av standardkonstruktorn");
             Console.WriteLine(alarm.ToString());
 
@@ -65,20 +64,54 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
 
         private static void ViewErrorMessage(string message)
         {
+            
+            AlarmClock testProperties = new AlarmClock();
+            
+             try{
+                    testProperties.Hour = 36;
+             }
+             catch (ArgumentException e)
+             {
+                 Console.WriteLine(); 
+                 DisplayExceptionMessage(e.Message);
+             }
+             
             try
-            {
-                AlarmClock testAlarm = new AlarmClock(50, 72, 26, 72);
-                testAlarm.TickTock();
-            }
-            catch(ArgumentException e)
-            {
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine();
-                Console.WriteLine("{0}", e.Message);
-                Console.ResetColor();
-               
-            } 
+             {
+                 testProperties.Minute = 72;
+             }
+             catch (ArgumentException e)
+             {
+                 DisplayExceptionMessage(e.Message);
+             }
+             
+            try
+             {
+                 testProperties.AlarmHour = 26;
+             }
+             catch (ArgumentException e)
+             {
+                 DisplayExceptionMessage(e.Message);
+             }
+             
+            try
+             {
+                 testProperties.AlarmMinute = 61;
+             }
+             catch (ArgumentException e)
+             {
+                 DisplayExceptionMessage(e.Message);
+             }
+ 
+        }
+        
+        //Method that displays errormessages for different properties in AlarmClock.cs
+        private static void DisplayExceptionMessage(string message)
+        {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("{0}", message);
+            Console.ResetColor();
         }
     }
 }

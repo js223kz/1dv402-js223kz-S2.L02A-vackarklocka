@@ -23,6 +23,7 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
                 if(value > 24 || value < 0 ){
 
                     throw new ArgumentException("Timmen är inte i intervallet 0-23.");
+                    
                 }
                 _Hour = value; 
             }
