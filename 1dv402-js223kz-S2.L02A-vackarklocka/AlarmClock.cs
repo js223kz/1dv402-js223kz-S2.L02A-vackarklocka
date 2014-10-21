@@ -8,15 +8,15 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
 {
     public class AlarmClock
     {
-        private int _Hour;
-        private int _Minute;
-        private int _AlarmHour;
-        private int _AlarmMinute;
+        private int _hour;
+        private int _minute;
+        private int _alarmHour;
+        private int _alarmMinute;
 
         //Egenskap som kapslar in _hour
         public int Hour{
             get{
-                return _Hour;
+                return _hour;
             }
             set{
                
@@ -25,14 +25,14 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
                     throw new ArgumentException("Timmen är inte i intervallet 0-23.");
                     
                 }
-                _Hour = value; 
+                _hour = value; 
             }
         }
         
         //Egenskap som kapslar in _minute
         public int Minute{
             get{
-                return _Minute;
+                return _minute;
             }
             set{
                 if (value > 60|| value < 0)
@@ -40,35 +40,35 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
                     throw new ArgumentException("Minuten är inte i intervallet 0-59.");
                 }
 
-                _Minute = value;
+                _minute = value;
             }
         }
 
         //Egenskap som kapslar in _alarmHour
         public int AlarmHour{
             get{
-                return _AlarmHour;
+                return _alarmHour;
             }
             set{
                 if (value > 24 || value < 0)
                 {
                     throw new ArgumentException("Alarmtimmen är inte i intervallet 0-23.");
                 }
-                _AlarmHour = value;
+                _alarmHour = value;
             }
         }
         
         //Egenskap som kapslar in _alarmMinute
         public int AlarmMinute{
             get{
-                return _AlarmMinute;
+                return _alarmMinute;
             }
             set{
                 if (value > 60 || value < 0)
                 {
                     throw new ArgumentException("Alarmminuten är inte i intervallet 0-59.");
                 }
-                _AlarmMinute = value;
+                _alarmMinute = value;
             }
         }
 
@@ -88,10 +88,10 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
         
         public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute) 
         {
-            _Hour = hour;
-            _Minute = minute;
-            _AlarmHour = alarmHour;
-            _AlarmMinute = alarmMinute;
+            Hour = hour;
+            Minute = minute;
+            AlarmHour = alarmHour;
+            AlarmMinute = alarmMinute;
         }
 
         //KLockan ska ticka varje minut

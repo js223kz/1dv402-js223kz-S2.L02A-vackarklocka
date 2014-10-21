@@ -39,6 +39,7 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
         
         }
 
+        //Display clock and alarm
         private static void Run(AlarmClock alarm, int minutes)
         {
             Console.BackgroundColor = ConsoleColor.DarkGreen;
@@ -66,9 +67,9 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
             }
         }
 
+        //Method to test validation of Properties. Finns det inget bättre sätt än att göra så många try catch?
         private static void ViewErrorMessage(string message)
         {
-            
             AlarmClock testProperties = new AlarmClock();
             
              try{
@@ -109,21 +110,60 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
  
         }
 
+        //Method to test Constructors
         private static void ViewTestHeader(string header)
         {
             AlarmClock testConstructors = new AlarmClock();
+
             try
             {
-                testConstructors = new AlarmClock(25, 62);
-                testConstructors.TickTock();
+                testConstructors = new AlarmClock(34, 0);
             }
             catch (ArgumentException e)
             {
                 Console.WriteLine();
                 DisplayExceptionMessage(e.Message);
-                 
             }
-
+            try
+            {
+                testConstructors = new AlarmClock(0, 83);
+            }
+            catch (ArgumentException e)
+            {
+                DisplayExceptionMessage(e.Message);
+            }
+            try
+            {
+                testConstructors = new AlarmClock(26, 0, 0, 0);
+            }
+            catch (ArgumentException e)
+            {
+                DisplayExceptionMessage(e.Message);
+            }
+            try
+            {
+                testConstructors = new AlarmClock(0, 89, 0, 0);
+            }
+            catch (ArgumentException e)
+            {
+                DisplayExceptionMessage(e.Message);
+            }
+            try
+            {
+                testConstructors = new AlarmClock(0, 0, 27, 0);
+            }
+            catch (ArgumentException e)
+            {
+                DisplayExceptionMessage(e.Message);
+            }
+            try
+            {
+                testConstructors = new AlarmClock(0, 0, 0, 92);
+            }
+            catch (ArgumentException e)
+            {
+                DisplayExceptionMessage(e.Message);
+            }
         }
         
         //Method that displays errormessages for different properties in AlarmClock.cs
