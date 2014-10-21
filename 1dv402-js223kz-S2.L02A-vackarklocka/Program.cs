@@ -11,6 +11,8 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
         static void Main(string[] args)
         {
             AlarmClock alarm = new AlarmClock();
+            string message = "";
+
             Console.WriteLine("Test 1\nTest av standardkonstruktorn");
             Console.WriteLine(alarm.ToString());
 
@@ -31,7 +33,6 @@ namespace _1dv402_js223kz_S2.L02A_vackarklocka
             Run(alarm, 6);
 
             Console.WriteLine("\nTest 6\nTestar egenskaperna så att undantag kastas då tid och alarmtid tilldelas fel värden\n");
-            string message = "";
             ViewErrorMessage(message);
  
             Console.WriteLine("\nTest 7\nTestar konstruktorer så att undantag kastas då tid och alarmtid tilldelas fel värden\n");
